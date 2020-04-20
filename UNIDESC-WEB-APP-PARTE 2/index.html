@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="unidescApp">
+<head>
+    <meta charset="=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    
+        
+    <title>Minha Aplicação Angular</title>
+</head>
+<body ng-controller="produtoController as vm">
+    <div class="container">    
+
+       <div class="row justify-content-center">
+
+          <form class="form-group">
+              <h1>Cadastro de Produtos</h1>
+              <label for="inputProduto">Produto</label>
+              <input type="text" name="inputProduto" id="inputProduto" placeholder="Digite o Produto" class="form-control" ng-model="vm.produto.nome" required>
+
+              <label for="inputPreco">Preço</label>
+              <input type="text" name="inputPreco" id="inputPreco" placeholder="Digite o Preço" class="form-control" ng-model="vm.produto.preco" required><br>
+
+              <button class="btn btn-primary" type="submit" ng-click="vm.adicionarProduto()">Adicionar</button>
+              <button class="btn btn-secondary" type="reset" ng-click="vm.limparCampos()">Limpar</button>
+
+
+          </form>
+
+      </div>
+      <div class="row justify-content-center">
+          <table class="table-bordered table-striped">
+          <tr>
+              <th>Produto</th>
+              <th>Preço</th>
+              <th></th>
+              <th></th>
+          </tr>
+          <tbody>
+                <tr ng-repeat="item in vm.produtos track by $index">
+                    <td>{{item.nome}}</td>
+                    <td>{{item.preco}}</td>
+                    <td>
+                        <button ng-click="vm.deletarItem()">Deletar</button>
+                    </td>
+                    <td>
+                        <button>Alterar</button>
+                    </td>
+                </tr>
+          </tbody>
+
+          </table>
+      </div>
+    </div>        
+              
+              
+
+
+
+    <script src="./node_modules/angular/angular.min.js"></script>
+    <script src="./app/app.js"></script>
+    <script src="./app/controller.js"></script>
+
+
+</body>
+</html>
